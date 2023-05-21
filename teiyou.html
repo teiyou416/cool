@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gisann</title>
+
+    
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+#header {
+    background-color: #008080;
+    height: 100px;
+    line-height: 100px;
+    width: 100%;
+}
+
+#header.menu{  
+	
+
+  display: flex;				/* display: flex：弹性盒子，很适合多个元素按一行或者一列排开 */
+  height: 100%;				/* 设置和导航栏 header 相同的高度 */
+  line-height: 50px;			/* 设置行高，注意不要使用 inherit（继承），因为 menu 的父标签不是 header，而是 ul，我们并没有设置 ul 的行高，无法继承 */
+  max-width: 60 0px;			/* 最大宽度 */
+  padding: 0 20px;			/* 左右内边距均为 20 像素 */
+
+
+}
+#header .menu li{
+   height: 100%;				/* 设置高度，让每一个标签的高度也等于 header 高度 */
+}
+#header li:hover {
+  background: #4c9e9e;	
+  transition: 0.5s;			/* 持续 0.5 秒 */
+}
+
+/* 设置 li 中 a 标签样式，可以发现我们严格按照从外到内的原则编写样式 */
+#header .menu li a {
+  font: bolder normal 16px Source Sans Pro;
+  color: #fff;				/* 不解释，看不懂的补 CSS 知识去 */
+  padding: 14px 15px;
+}
+
+#header .search-bar {
+    max-width: 500px;
+    padding:0 20px;
+}
+
+
+#header .search-bar form {
+    position: relative;				
+}
+
+
+#header .search-bar form [type=text] {
+    border-radius: 5px;					/* 圆角 */
+    border: 2px solid #2cb4b4;			/* 边框属性（鼠标不点击也会显示） */
+    outline: none;						/* 这个是取消鼠标点击时，显示出来的边框，和上边的不一样，注意区分 */
+    background-color: #fff;				/* 背景颜色 */
+    height: 50px;						/* 高度 */
+    width: 100%;						/* 宽度，这里设置 100% 的原因是为了让输入框贴合 form 表单 */
+
+    color: #000;						/* 字体颜色 */
+    text-align: left;					/* 文本左对齐 */
+    text-indent: 1em;					/* 首行缩进一个字符 */
+    font: normal normal 13px Dosis;		/* 字体属性 */
+}
+
+
+#header .search-bar form [type=submit] {
+    border-radius: 0 5px 5px 0;			/* 圆角 */
+    border: none;						/* 边框属性 */
+    outline: none;						/* 同上边输入框的设置 */
+    height: 46px;						/* 高度 */
+    width: 60px;						/* 宽度 */
+    background-color: #2cb4b4;			/* 背景颜色 */
+    cursor: pointer;					/* 这是新出现的属性，代表鼠标移动到上面的时候，变成小手的样子 */
+
+    /* 开始我们的绝对定位，其实在实际书写网页的时候，个人不推荐使用定位，因为可能会导致错版，最好的写法是让元素自动适配页面 */
+    position: absolute;					/* 由于我们之前设置了 form 的 position 为 relative，所以我们此时的参照物就是 form */
+    top: 28px;							/* 距离上边框 28 像素，具体的你们自己用 Google 开发者工具试就行 */
+    right: 0;							/* 距离右边框 0 像素。还记得我们将输入框的宽度设置为 100% 吗，所以右边很容易对齐 */
+
+    color: #fff;						/* 字体颜色 */
+    font: normal normal 14px Dosis;		/* 字体样式 */
+}
+/* 设置图片样式以及定位，可以看到外面先设置 div 属性，再设置 img 标签样式 */
+
+/* 还是采用绝对定位的方式（因为要显示在输入框上方，只能采用定位，如果想要显示在按钮上，可以不采用定位！） */
+#header .search-bar .search-bar-left-image{
+    position: absolute;
+    padding-top:8px;
+    left:35px;
+    z-index:999;				/* 设置优先级，即重叠时候显示的顺序，值越大越优先显示 */
+}
+
+/* 设置图片宽高，我们推荐利用 CSS 进行设置，而不是直接改动图片的大小 */
+#header .search-bar .search-bar-left-image img{
+    width:24px;
+    height:24px;
+}
+
+#right{
+	width: 25%;
+	height: 98%;
+	float: left;
+
+}
+#left{
+	width: 68%;
+	height: 100%;
+    float:right;
+}
+#nav ul li a{
+	float: left;
+	margin-right: 28px;
+	font-size: 240px;
+	width: 100px;
+}
+
+#nav{	
+    width: 100%;
+	height: 40px;
+	margin-top: 15px;
+	margin-left: 50px;
+	font-size:18px;
+	Letter-spacing:20px;
+  
+	
+
+	
+}
+
+
+.title{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-indent: 20px;
+  color:rgb(255, 255, 255);
+}
+.content{
+	padding-left: 20px;
+	padding-right: 20px;
+	line-height: 20px;
+	color:rgb(109, 16, 230);
+	height:20px;
+	padding-bottom: 20px;
+	margin-bottom: 200px;
+}
+
+.content li{
+	line-height: 25px;
+	border-bottom: dashed 1px #6108089c;
+}
+#search{
+	float: right;
+	margin-top: 0px;
+  
+}
+video#bgvid {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width:auto; height: 120%; z-index: -100;
+    background-size: cover;
+    }	
+
+    button {
+  margin: 20px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+  .btn-9 {
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  .btn-9:after {
+    position: absolute;
+    content: " ";
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background-color: #1fd1f9;
+  background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+    transition: all 0.3s ease;
+  }
+  .btn-9:hover {
+    background: transparent;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+    color: #fff;
+  }
+  .btn-9:hover:after {
+    -webkit-transform: scale(2) rotate(180deg);
+    transform: scale(2) rotate(180deg);
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  }
+</style>
+
+</head>
+<body>
+    
+
+    
+  <div class="text-center w-mian">
+    <video autoplay  class="bgvid" id="bgvid" muted>
+        <source src="pexels-oleg-gamulinskii-3163534-3840x2160-30fps.mp4" type="video/mp4">
+    </video>
+    </div>
+    
+			<div id="header">
+        <div class="search-bar">
+          
+            <form method="post" action="#">
+              <input type="text" name="search_value" maxlength="32" placeholder="">
+              <button type="submit">Search</button>
+              <div class="search-bar-left-image">
+                <img class="search" src="sb.png" alt="nothing">
+            </div>
+          </form>
+       
+ 
+          
+        </div>
+        <div class="menu">
+				<li class="front-page">
+					<a href="#">関東土木学会選奨 </a></li>	
+             
+        
+    
+        </div>
+       
+      </div>
+			<div id="nav">
+				<button class="custom-btn btn-9"><a href="#"><span>Home</span></a></button>
+                <button class="custom-btn btn-9"> <a href="#"><span>江ノ島電鉄</span></a></button>
+                    <button class="custom-btn btn-9"><a href="#"><span>上毛電気鉄道</span></a></button>
+                        <button class="custom-btn btn-9"><a href="#"><span>箱根電鉄</span></a></button>
+			</div>
+		
+			<div id="main">
+				<div id="right">
+					
+					<div class="title">
+						<h2>土木学会選奨</h2>
+					</div>
+					<div class="content" style="border: none;">
+						<p>土木学会選奨土木遺産は、社団法人土木学会が、
+					</p>
+					<p>日本国内の歴史的建造物のうち土木構造物について、これの保存に資すること
+					</p>
+					<p>を目的として構造物群を「土木遺産」に認定して顕彰する制度、及びこれにより顕彰された土木構造物群のこと。
+					<p>2000年より認定を開始している。2019年1月時点で394件が選ばれている。!
+					</p>
+					
+					</div>
+				</div>
+                </div>
+		
+					
+    
+  
+     
+
+		
+				
+       				
+	
+			
+</body>
+</html>
+<script>
+    $("#wBtn").click(function () {
+        location.href="../index/index.html";
+    })
+</script>
