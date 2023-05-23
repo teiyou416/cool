@@ -7,9 +7,11 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" media="screen" href="css/style.css">
     
     <style>
+ 
 body {
   margin: 0;
   padding: 0;
@@ -30,27 +32,32 @@ a {
 
 #header {
     background-color: #1D267D;
-    height: 81px;
-    line-height: 100px;
+    height: 100px;
+    background-image: url("kan.png");
+    line-height: 100px; 
     width: 100%;
+   
+   
 }
 #header .menu {
-    display: flex;				/* display: flex：弹性盒子，很适合多个元素按一行或者一列排开 */
+ 		
     height: 100%;				/* 设置和导航栏 header 相同的高度 */
-    line-height: 50px;			/* 设置行高，注意不要使用 inherit（继承），因为 menu 的父标签不是 header，而是 ul，我们并没有设置 ul 的行高，无法继承 */
-    max-width: 600px;			/* 最大宽度 */
-    padding: 0 20px;	
+    line-height: 85px;			/* 设置行高，注意不要使用 inherit（继承），因为 menu 的父标签不是 header，而是 ul，我们并没有设置 ul 的行高，无法继承 */
+    max-width: 6000px;			/* 最大宽度 */
+    padding: 20 20px;	
+    
     		/* 左右内边距均为 20 像素 */
 }
 
 /* 设置 ul 中每一个 li 的样式*/
 #header .menu li{
-     height: 100%;				/* 设置高度，让每一个标签的高度也等于 header 高度 */
+     height: 100%;
+     				/* 设置高度，让每一个标签的高度也等于 header 高度 */
  }
 
 /* 设置 li 的鼠标移过动画 */
 #header li:hover {
-    background: #CCCCFF;	
+    background: #1616b4;	
     transition: 0.5s;			/* 持续 0.5 秒 */
 }
 
@@ -63,24 +70,32 @@ a {
 
 /* 设置搜素框的最大宽度和内边距 */
 #header .search-bar {
+ 
     max-width: 500px;
     padding:0 20px;
-}
+    
+};
+  
+ 
 
 /* 从这里开始，我们正式开始设置搜索框的样式，前面主要负责设置宽高以及内外边距 */
-#header .search-bar form {
-    position: relative;					/* 重点※，我们希望输入框或者按钮的绝对定位以 form 为参照物，而不是默认的浏览器 */
-}
+#search-bar form {
+  position: relative;
+}/* 重点※，我们希望输入框或者按钮的绝对定位以 form 为参照物，而不是默认的浏览器 */
+
 
 /* 设置输入框样式，还记得吗？这是属性选择器，CSS 中很常用的选择器之一 */
 #header .search-bar form [type=text] {
-    border-radius: 5px;					/* 圆角 */
-    border: 2px solid #093572;			/* 边框属性（鼠标不点击也会显示） */
+    border-radius:5px;					/* 圆角 */
+    border: 2px solid #2cb4b4;;			/* 边框属性（鼠标不点击也会显示） */
     outline: none;						/* 这个是取消鼠标点击时，显示出来的边框，和上边的不一样，注意区分 */
     background-color: #FEFBF6;				/* 背景颜色 */
     height: 50px;						/* 高度 */
     width: 100%;						/* 宽度，这里设置 100% 的原因是为了让输入框贴合 form 表单 */
-
+   float:left;
+    margin-left:1402px;
+    margin-top:-54px;
+    cursor: pointer;	
     color: #000;						/* 字体颜色 */
     text-align: left;					/* 文本左对齐 */
     text-indent: 1em;					/* 首行缩进一个字符 */
@@ -94,17 +109,19 @@ a {
     outline: none;						/* 同上边输入框的设置 */
     height: 46px;						/* 高度 */
     width: 60px;						/* 宽度 */
-    background-color: #05c1f0;			/* 背景颜色 */
+    background-color: #14b8b8;			/* 背景颜色 */
     cursor: pointer;					/* 这是新出现的属性，代表鼠标移动到上面的时候，变成小手的样子 */
-
+    
     /* 开始我们的绝对定位，其实在实际书写网页的时候，个人不推荐使用定位，因为可能会导致错版，最好的写法是让元素自动适配页面 */
-    position: absolute;					/* 由于我们之前设置了 form 的 position 为 relative，所以我们此时的参照物就是 form */
-    top: 7.5px;							/* 距离上边框 28 像素，具体的你们自己用 Google 开发者工具试就行 */
-    right: -20.5px;							/* 距离右边框 0 像素。还记得我们将输入框的宽度设置为 100% 吗，所以右边很容易对齐 */
-
-    color: #fff;						/* 字体颜色 */
+ 		/* 由于我们之前设置了 form 的 position 为 relative，所以我们此时的参照物就是 form */
+     position: absolute;							/* 距离上边框 28 像素，具体的你们自己用 Google 开发者工具试就行 */
+    right: 0;							/* 距离右边框 0 像素。还记得我们将输入框的宽度设置为 100% 吗，所以右边很容易对齐 */
+    top: 28px;							
+    color: #ececec;						/* 字体颜色 */
     font: normal normal 14px Dosis;		/* 字体样式 */
 }
+
+
 h1 {
   text-align: center;
 }
@@ -207,6 +224,62 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   -moz-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
 }
+.title{
+	width: 500px;
+	height: 50px;
+	background: #1D267D;
+	line-height: 50px;
+	text-indent: 20px;
+}
+.content{
+	padding-left: 20px;
+	padding-right: 20px;
+	line-height: 200px;
+  width: 500px;
+	color: #787878;
+	border: 1px solid #D6E6CC;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+  text-align: center;
+}
+
+.content li{
+	line-height: 25px;
+	border-bottom:  #D1D1D1;
+}
+
+p{
+	margin: 10px;
+}
+#main{
+	width: 100%px;
+	height: auto;
+	margin-top: 20px;
+}
+#left{
+	width: 25%;
+	height: 150%;
+	float:  left;
+}
+#right{
+	width: 72%;
+	height: 98%;
+	float:right;
+  
+}
+#left .content,#right .content{
+	background: #faf0f9;
+}
+#footer{
+	width: 100%;
+	height: 90px;
+	background: gray;
+	margin-top: 180px;
+	float: left;
+	background: #D5E2CB;
+	padding: 20px;
+	text-align: center;/* ++*/
+}
 
 
    </style>
@@ -214,36 +287,71 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 </head>
 
 <body>
-  
+  <div id="particles-js"></div> 
   <div id="header">
-
-    <!-- 这里每一个功能都设置了 class 名称 -->
-    <ul>
-        <div class="menu">
-            <li class="front-page"><a href="#">関西大学　 環境都市工学部　都市システム工学科</a></li>
-        </div>
-    </ul>
-
-</div>
-
-<div id="header">
-    <div class="search-bar">
-        <form method="post" action="#">
-          
-            <input type="text" name="search_value" maxlength="32" placeholder="请输入搜索内容，例如：畅谈、">
-          
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
-<div class="count-particles">
-<button class="custom-btn btn-12"><span>Click!</span><span>Read More</span></button>
+    <u1>
+      <div class="menu">
+      <li class="front-page"><a href="#">   </a></li></div></u1> 
+      <div class="search-bar">
+      <form method="get" action="#">
+                    
+        <input type="text" name="search_value" maxlength="32" placeholder="请输入搜索内容，例如：畅谈、">
+      
+        <button type="submit">Search</button>
+    </form>
+             
+                </div>      
+    
   </div>
-
-<div id="particles-js"></div>
+        
+              
+<table> 
+  <tr><button class="custom-btn btn-12"><span>Read more!</span><span>江ノ島電鉄</span></button></tr>
+   <tr><button class="custom-btn btn-12"><span>Read more!</span><span>上毛電気鉄道</span></button></tr>
+   <tr><button class="custom-btn btn-12"><span>Read more!</span><span>箱根登山鉄道</span></button></tr>
+   </table> 
+   <div id="main">
+    
+    <div id="left">
+      <div class="title">
+        <h1>写真</h1>
+      </div>
+      <div class="content" style="border: none;">
+        <img src="eno.png"width ="450"height="450"> 
+      </div>
+    </div>
+    <div id="right">
+      <!--右侧内容一-->
+    <div class="title">
+      <h2>写真</h2>
+    </div>
+    <div class="content">
+      <p></p>
+      
+    </div>
+      <!--右侧内容二-->
+    <div class="title">
+      <h2>梅西</h2>
+    </div>
+    <div class="content">
+      <p>。</p>
+      <p>
+      </p>
+    </div>
+   
+  </div>
+  
+ 
+  <div id="footer">
+   環境都市工学部　都市システム工学科　程　ヨウ &copy;Copyright (c) 2023 .All Rights reserved
+  </div> 
+    </div>
+    
+  
 <script src="../particles.js"></script>
 <script src="js/app.js"></script>
 
+ 
+  
 </body>
 </html>
-
