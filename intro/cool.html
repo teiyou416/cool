@@ -67,14 +67,9 @@ a {
  padding:0 20px;
  
 };
- 
-
-
 #search-bar form {
  position: relative;
 }
-
-
 #header .search-bar form [type=text] {
  border-radius:5px;   
  border: 2px solid #2cb4b4;;  
@@ -365,7 +360,7 @@ height: 500px;
  <div id="right">
  
  
-  <!--右侧内容-->
+  <!--右の内容-->
  <div class="title">
   <h2>土木学会選奨土木遺産とは</h2>
  </div>
@@ -432,15 +427,11 @@ height: 500px;
 
 
    let container = document.querySelector('.content');
-   // 鼠标经过时清除定时器
    container.onmouseover = function () {
        clearInterval(interval);
    }
-   // 鼠标移开时设置定时器
    container.onmouseout = function () {
-       // 先清除定时器
        clearInterval(interval);
-       // 往右滑动并开启定时器
        // marginLeft(true)
        interval = setInterval(() => {
            marginLeft(true)
