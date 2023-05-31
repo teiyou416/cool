@@ -2,356 +2,338 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>导航栏（二）</title>
-    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
-  <meta name="author" content="Vincent Garreau" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link rel="stylesheet" media="screen" href="css/style.css">
-    
-    <style>
+ <meta charset="UTF-8">
+ <title>导航栏（二）</title>
+ <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+ <meta name="author" content="Vincent Garreau" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+ <link rel="stylesheet" media="screen" href="css/style.css">
  
-body {
-  margin: 0;
-  padding: 0;
+<style>
+body{
+ margin: 0;
+ padding: 0;
 }
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
 li {
-    list-style: none;
+ list-style: none;
 }
 
 a {
-    text-decoration: none;
+ text-decoration: none;
 }
-
 
 #header {
-    background-color: #1D267D;
-    height: 100px;
-    background-image: url("kan.png");
-    line-height: 100px; 
-    width: 100%;
-   
-   
+ background-color: #1616b4;
+ height: 100px;
+ background-image: url("kan.png");
+ line-height: 100px;
+ width: 100%;
+
+
 }
 #header .menu {
- 		
-    height: 100%;				/* 设置和导航栏 header 相同的高度 */
-    line-height: 85px;			/* 设置行高，注意不要使用 inherit（继承），因为 menu 的父标签不是 header，而是 ul，我们并没有设置 ul 的行高，无法继承 */
-    max-width: 6000px;			/* 最大宽度 */
-    padding: 20 20px;	
-    
-    		/* 左右内边距均为 20 像素 */
+ 
+ height: 100%;   
+ line-height: 85px;  
+ max-width: 6000px;  
+ padding: 20 20px; 
 }
 
-/* 设置 ul 中每一个 li 的样式*/
 #header .menu li{
-     height: 100%;
-     				/* 设置高度，让每一个标签的高度也等于 header 高度 */
- }
+ height: 100%;
+   
+}
 
-/* 设置 li 的鼠标移过动画 */
 #header li:hover {
-    background: #1616b4;	
-    transition: 0.5s;			/* 持续 0.5 秒 */
+ background: #1616b4; 
+ transition: 0.5s;  
 }
 
-/* 设置 li 中 a 标签样式，可以发现我们严格按照从外到内的原则编写样式 */
 #header .menu li a {
-    font: bolder normal 16px Source Sans Pro;
-    color: #fff;				/* 不解释，看不懂的补 CSS 知识去 */
-    padding: 14px 15px;
+ font: bolder normal 16px Source Sans Pro;
+ color: #fff;  
+ padding: 14px 15px;
 }
 
-/* 设置搜素框的最大宽度和内边距 */
 #header .search-bar {
+
+ max-width: 500px;
+ padding:0 20px;
  
-    max-width: 500px;
-    padding:0 20px;
-    
 };
-  
  
 
-/* 从这里开始，我们正式开始设置搜索框的样式，前面主要负责设置宽高以及内外边距 */
+
 #search-bar form {
-  position: relative;
-}/* 重点※，我们希望输入框或者按钮的绝对定位以 form 为参照物，而不是默认的浏览器 */
+ position: relative;
+}
 
 
-/* 设置输入框样式，还记得吗？这是属性选择器，CSS 中很常用的选择器之一 */
 #header .search-bar form [type=text] {
-    border-radius:5px;					/* 圆角 */
-    border: 2px solid #2cb4b4;;			/* 边框属性（鼠标不点击也会显示） */
-    outline: none;						/* 这个是取消鼠标点击时，显示出来的边框，和上边的不一样，注意区分 */
-    background-color: #FEFBF6;				/* 背景颜色 */
-    height: 50px;						/* 高度 */
-    width: 100%;						/* 宽度，这里设置 100% 的原因是为了让输入框贴合 form 表单 */
-   float:left;
-    margin-left:1402px;
-    margin-top:-54px;
-    cursor: pointer;	
-    color: #000;						/* 字体颜色 */
-    text-align: left;					/* 文本左对齐 */
-    text-indent: 1em;					/* 首行缩进一个字符 */
-    font: normal normal 13px Dosis;		/* 字体属性 */
+ border-radius:5px;   
+ border: 2px solid #2cb4b4;;  
+ outline: none;   
+ background-color: #FEFBF6;  
+ height: 50px;   
+ width: 100%;   
+float:left;
+ margin-left:1402px;
+ margin-top:-54px;
+ cursor: pointer; 
+ color: #000;   
+ text-align: left;   
+ text-indent: 1em;   
+ font: normal normal 13px Dosis;  
 }
-
-/* 设置按钮样式 */
 #header .search-bar form [type=submit] {
-    border-radius:  0 7px 7px 0;			/* 圆角 */
-    border: none;						/* 边框属性 */
-    outline: none;						/* 同上边输入框的设置 */
-    height: 46px;						/* 高度 */
-    width: 60px;						/* 宽度 */
-    background-color: #14b8b8;			/* 背景颜色 */
-    cursor: pointer;					/* 这是新出现的属性，代表鼠标移动到上面的时候，变成小手的样子 */
-    
-    /* 开始我们的绝对定位，其实在实际书写网页的时候，个人不推荐使用定位，因为可能会导致错版，最好的写法是让元素自动适配页面 */
- 		/* 由于我们之前设置了 form 的 position 为 relative，所以我们此时的参照物就是 form */
-     position: absolute;							/* 距离上边框 28 像素，具体的你们自己用 Google 开发者工具试就行 */
-    right: 0;							/* 距离右边框 0 像素。还记得我们将输入框的宽度设置为 100% 吗，所以右边很容易对齐 */
-    top: 28px;							
-    color: #ececec;						/* 字体颜色 */
-    font: normal normal 14px Dosis;		/* 字体样式 */
+ border-radius: 0 7px 7px 0;  
+ border: none;    
+ outline: none;   
+ height: 46px;    
+ width: 60px;   
+ background-color: #14b8b8;  
+ cursor: pointer;   
+ position: absolute;    
+ right: 0;    
+ top: 28px;    
+ color: #ececec;    
+ font: normal normal 14px Dosis;  
 }
-
 
 h1 {
-  text-align: center;
+ text-align: center;
 }
-
 
 .frame {
-  width: 90%;
-  margin: 40px auto;
-  text-align: center;
+ width: 90%;
+ margin: 40px auto;
+ text-align: center;
 }
 button {
-  margin: 20px;
+ margin: 20px;
 }
 .custom-btn {
-  width: 130px;
-  height: 40px;
-  color: #fff;
-  border-radius: 5px;
-  padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(252, 250, 250, 0.1),
-   4px 4px 5px 0px rgba(230, 7, 7, 0);
-  outline: none;
+ width: 130px;
+ height: 40px;
+ color: #fff;
+ border-radius: 5px;
+ padding: 10px 25px;
+ font-family: 'Lato', sans-serif;
+ font-weight: 500;
+ background: transparent;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ position: relative;
+ display: inline-block;
+box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(252, 250, 250, 0.1),
+4px 4px 5px 0px rgba(230, 7, 7, 0);
+ outline: none;
 }
-
 
 .btn-12{
-  position: relative;
-  right: 20px;
-  bottom: 20px;
-  border:none;
-  box-shadow: none;
-  width: 130px;
-  height: 40px;
-  line-height: 42px;
-  -webkit-perspective: 230px;
-  perspective: 230px;
+ position: relative;
+ right: 20px;
+ bottom: 20px;
+ border:none;
+ box-shadow: none;
+ width: 130px;
+ height: 40px;
+ line-height: 42px;
+ -webkit-perspective: 230px;
+ perspective: 230px;
 }
 .btn-12 span {
-  background: rgb(0,172,238);
+ background: rgb(0,172,238);
 background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-  display: block;
-  position: absolute;
-  width: 130px;
-  height: 40px;
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  border-radius: 5px;
-  margin:0;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all .3s;
-  transition: all .3s;
+ display: block;
+ position: absolute;
+ width: 130px;
+ height: 40px;
+ box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+ border-radius: 5px;
+ margin:0;
+ text-align: center;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+ -webkit-transition: all .3s;
+ transition: all .3s;
 }
 .btn-12 span:nth-child(1) {
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
-  -webkit-transform: rotateX(90deg);
-  -moz-transform: rotateX(90deg);
-  transform: rotateX(90deg);
-  -webkit-transform-origin: 50% 50% -20px;
-  -moz-transform-origin: 50% 50% -20px;
-  transform-origin: 50% 50% -20px;
+ box-shadow:
+-7px -7px 20px 0px #fff9,
+-4px -4px 5px 0px #fff9,
+7px 7px 20px 0px #0002,
+4px 4px 5px 0px #0001;
+ -webkit-transform: rotateX(90deg);
+ -moz-transform: rotateX(90deg);
+ transform: rotateX(90deg);
+ -webkit-transform-origin: 50% 50% -20px;
+ -moz-transform-origin: 50% 50% -20px;
+ transform-origin: 50% 50% -20px;
 }
 .btn-12 span:nth-child(2) {
-  -webkit-transform: rotateX(0deg);
-  -moz-transform: rotateX(0deg);
-  transform: rotateX(0deg);
-  -webkit-transform-origin: 50% 50% -20px;
-  -moz-transform-origin: 50% 50% -20px;
-  transform-origin: 50% 50% -20px;
+ -webkit-transform: rotateX(0deg);
+ -moz-transform: rotateX(0deg);
+ transform: rotateX(0deg);
+ -webkit-transform-origin: 50% 50% -20px;
+ -moz-transform-origin: 50% 50% -20px;
+ transform-origin: 50% 50% -20px;
 }
 .btn-12:hover span:nth-child(1) {
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
-  -webkit-transform: rotateX(0deg);
-  -moz-transform: rotateX(0deg);
-  transform: rotateX(0deg);
+ box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+ -webkit-transform: rotateX(0deg);
+ -moz-transform: rotateX(0deg);
+ transform: rotateX(0deg);
 }
 .btn-12:hover span:nth-child(2) {
-  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
- color: transparent;
-  -webkit-transform: rotateX(-90deg);
-  -moz-transform: rotateX(-90deg);
-  transform: rotateX(-90deg);
+ box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+7px 7px 20px 0px rgba(0,0,0,.1),
+4px 4px 5px 0px rgba(0,0,0,.1);
+color: transparent;
+ -webkit-transform: rotateX(-90deg);
+ -moz-transform: rotateX(-90deg);
+ transform: rotateX(-90deg);
 }
 .title{
-	width: 500px;
-	height: 50px;
-	background: #1D267D;
-	line-height: 50px;
-	text-indent: 20px;
+ width: 500px;
+ height: 50px;
+ color: #faf0f9;
+ background: #1D267D;
+ line-height: 50px;
+ text-indent: 20px;
 }
 .content{
-	padding-left: 20px;
-	padding-right: 20px;
-	line-height: 200px;
-  width: 500px;
-	color: #787878;
-	border: 1px solid #D6E6CC;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-  text-align: center;
+ padding-left: 20px;
+ padding-right: 20px;
+ line-height: 20px;
+ width: 500px;
+ color: #070707;
+ font-size:14px;
+ border: 1px solid #D6E6CC;
+ padding-bottom: 20px;
+ margin-bottom: 20px;
+ text-align: center;
 }
 
 .content li{
-	line-height: 25px;
-	border-bottom:  #D1D1D1;
+ line-height: 25px;
+ border-bottom: #D1D1D1;
 }
 
 p{
-	margin: 10px;
+ margin: 10px;
 }
 #main{
-	width: 100%px;
-	height: auto;
-	margin-top: 20px;
+ width: 100%px;
+ height: auto;
+ margin-top: 20px;
 }
 #left{
-	width: 25%;
-	height: 150%;
-	float:  left;
+ width: 550px;
+ height: 500px;
+ margin-left: 380px;
+ float: left;
 }
 #right{
-	width: 72%;
-	height: 98%;
-	float:right;
-  
+ width: 460px;
+ height: 98%;
+ float:right;
+ margin-right: 480px;
 }
 #left .content,#right .content{
-	background: #faf0f9;
+ background: #faf0f9;
 }
 #footer{
-	width: 100%;
-	height: 90px;
-	background: gray;
-	margin-top: 180px;
-	float: left;
-	background: #D5E2CB;
-	padding: 20px;
-	text-align: center;/* ++*/
+ width: 100%;
+ height: 90px;
+ color: #ececec;
+ background: gray;
+ margin-top: 180px;
+ float: left;
+ background: #1616b4;
+ padding: 20px;
+ text-align: center;/* ++*/
 }
 
+</style>
 
-   </style>
 
 </head>
 
 <body>
-  <div id="particles-js"></div> 
-  <div id="header">
-    <u1>
-      <div class="menu">
-      <li class="front-page"><a href="#">   </a></li></div></u1> 
-      <div class="search-bar">
-      <form method="get" action="#">
-                    
-        <input type="text" name="search_value" maxlength="32" placeholder="请输入搜索内容，例如：畅谈、">
-      
-        <button type="submit">Search</button>
-    </form>
-             
-                </div>      
-    
-  </div>
-        
-              
-<table> 
-  <tr><button class="custom-btn btn-12"><span>Read more!</span><span>江ノ島電鉄</span></button></tr>
-   <tr><button class="custom-btn btn-12"><span>Read more!</span><span>上毛電気鉄道</span></button></tr>
-   <tr><button class="custom-btn btn-12"><span>Read more!</span><span>箱根登山鉄道</span></button></tr>
-   </table> 
-   <div id="main">
-    
-    <div id="left">
-      <div class="title">
-        <h1>写真</h1>
-      </div>
-      <div class="content" style="border: none;">
-        <img src="eno.png"width ="450"height="450"> 
-      </div>
-    </div>
-    <div id="right">
-      <!--右侧内容一-->
-    <div class="title">
-      <h2>写真</h2>
-    </div>
-    <div class="content">
-      <p></p>
-      
-    </div>
-      <!--右侧内容二-->
-    <div class="title">
-      <h2>梅西</h2>
-    </div>
-    <div class="content">
-      <p>。</p>
-      <p>
-      </p>
-    </div>
-   
-  </div>
-  
+ <div id="particles-js"></div> 
+ <div id="header">
  
-  <div id="footer">
-   環境都市工学部　都市システム工学科　程　ヨウ &copy;Copyright (c) 2023 .All Rights reserved
-  </div> 
-    </div>
-    
+ <u1>
+  <div class="menu">
+  <li class="front-page"><a href="#">  </a></li></div></u1> 
+  <div class="search-bar">
+  <form method="get" action="#">
+     
+  <input type="text" name="search_value" maxlength="32" placeholder="请输入搜索内容，例如：畅谈、">
   
+  <button type="submit">Search</button>
+ </form>
+   
+    </div>  
+ 
+ </div>
+  
+    
+<table> 
+ <tr><button class="custom-btn btn-12"><a href ="cool.html"><span>Read more!</span><span>menu</span></button></tr></a>
+ <tr><button class="custom-btn btn-12"><a href ="eno.html"><span>Read more!</span><span>江ノ島電鉄</span></button></tr></a>
+ <tr><button class="custom-btn btn-12"><a href="kami.html"><span>Read more!</span><span>上毛電気鉄道</span></button></tr></a>
+ <tr><button class="custom-btn btn-12"><span>Read more!</span><span>箱根登山鉄道</span></button></tr>
+</table> 
+<div id="main">
+ 
+ <div id="left">
+  <div class="title">
+  <h1>写真</h1>
+  </div>
+  <div class="content" style="border: none;">
+  <img src="eno.png"width ="450"height="450"> 
+  </div>
+ </div>
+ <div id="right">
+ 
+ 
+  <!--右侧内容-->
+ <div class="title">
+  <h2>土木学会選奨土木遺産とは</h2>
+ </div>
+ <div class="content">
+  <p>土木学会選奨土木遺産は、社団法人土木学会が、日本国内の歴史的建造物のうち土木構造物について、これの保存に資すること
+  を目的として構造物群を「土木遺産」に認定して顕彰する制度、及びこれにより顕彰された土木構造物群のこと。
+  </p>
+ </div>
+
+ </div>
+ 
+
+ <div id="footer">
+環境都市工学部　都市システム工学科　程　ヨウ &copy;Copyright (c) 2023 .All Rights reserved
+ </div> 
+ </div>
+ 
+ 
 <script src="../particles.js"></script>
 <script src="js/app.js"></script>
 
+
  
-  
 </body>
 </html>
