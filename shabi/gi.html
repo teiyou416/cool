@@ -1,34 +1,137 @@
 <!DOCTYPE html>
-<head><style>html, body { height: 100% }
-
-    body {
-      background-color: #f9f9f9;
-    }
-    
-    h1 {
-      text-align: center;
-    }
-    
-    .background {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: -1;
-    }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .banner-imgBox{
+            width: 550px;
+            height: 500px;
+            /*background-color: #009dda;*/
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-imgBox2{
+            width: 550px;
+            height: 500px;
+            display: flex;
+            /*background-color: chartreuse;*/
+            margin: 0 auto;
+            transition: all 0.5s;
+        }
+        .banner-imgBox2>img{
+            width: 550px;
+            height: 470px;
+        }
+        .on{
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: gainsboro;
+            margin-left: 20px;
+        }
+        .banner-imgBox-div{
+            width: 550px;
+            position: absolute;
+            bottom: 20px;
+            left: 40%;
+            display: flex;
+        }
+        .on2{
+            background-color: red;
+        }
+        .banner-imgBox-left{
+            position: absolute;
+            left: 20px;
+            top:48%;
+            width: 24px;
+            height: 24px;
+        }
+        .banner-imgBox-right{
+            position: absolute;
+            right: 20px;
+            top:48%;
+            width: 24px;
+            height: 24px;
+            margin-right: 0;
+        }
     </style>
-    </head>
-    <body>
-        <canvas class="background"></canvas>
-        <script src="path/to/particles.min.js">
-            var particles = Particles.init({
-	selector: '.background',
-  color: ['#DA0463', '#404B69', '#DBEDF3'],
-  connectParticles: true
-});
+</head>
+<body>
+    <div class="banner-imgBox">
+        <div class="banner-imgBox2">
+            <img src="cool-background.png" alt="">
+            <img src="kansai.jpg" alt="">
+        </div>
+        <div class="banner-imgBox-div">
+            <div class="on"></div>
+            <div class="on"></div>
+        </div>
+        <img class="banner-imgBox-left" src="angle-left.png" onclick="marginLeft(false)">
+        <img class="banner-imgBox-right" src="angle-right.png" onclick="marginLeft(true)">
+    </div>
 
-        </script>
-    </body>
-  
+</body>
+<script>
+    var time=2000;
+    let content = document.querySelector('.banner-imgBox2');
+    let switchBtn = document.querySelector('.banner-imgBox-div');
+    switchBtn.children[0].classList.add('on2');
+    let index=0;
+    let x=0;
+    function marginLeft(right) {
+        if(right){
+            switchBtn.children[index].classList.remove('on2');
+            if(index==switchBtn.children.length-1){
+                index=0;
+                content.innerHTML+=content.innerHTML;
+                x++;
+            }else {
+                index++;
+                x++;
+            }
+            switchBtn.children[index].classList.add('on2');
+            content.style.marginLeft=x*-550+"px"
+        }else{
+            switchBtn.children[index].classList.remove('on2');
+            if(index==0){
+                index=switchBtn.children.length-1;
+                if(x==0){
+                    x=0
+                }else{
+                    x--;
+                }
+            }else {
+                index--;
+                x--;
+            }
+            switchBtn.children[index].classList.add('on2');
+            content.style.marginLeft=x*-550+"px"
+        }
 
+    }
+
+
+    var interval = setInterval(() => {
+        marginLeft(true)
+    }, time);
+
+
+    let container = document.querySelector('.banner-imgBox');
+    // 鼠标经过时清除定时器
+    container.onmouseover = function () {
+        clearInterval(interval);
+    }
+    // 鼠标移开时设置定时器
+    container.onmouseout = function () {
+        // 先清除定时器
+        clearInterval(interval);
+        // 往右滑动并开启定时器
+        // marginLeft(true)
+        interval = setInterval(() => {
+            marginLeft(true)
+        }, time);
+    }
+</script>
+</html>
