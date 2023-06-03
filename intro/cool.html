@@ -20,6 +20,10 @@ margin: 0;
  padding: 0;
  box-sizing: border-box;
 }
+
+
+
+
 li {
  list-style: none;
 }
@@ -100,7 +104,7 @@ float:left;
  color: #ececec;    
  font: normal normal 14px Dosis;  
 }
-
+.main
 h1 {
  text-align: center;
 }
@@ -202,7 +206,7 @@ color: transparent;
  transform: rotateX(-90deg);
 }
 .title{
- width: 550px;
+ width: 435px;
  height: 50px;
  color: #faf0f9;
  background: #1D267D;
@@ -229,24 +233,27 @@ color: transparent;
 p{
  margin: 10px;
 }
-#main{
- width: 100%px;
- height: auto;
- margin-top: 20px;
-}
 #left{
-width: 550px;
+width: 435px;
 height: 500px;
- margin-left: 380px;
  float: left;
  position: relative;
  overflow: hidden;
+ margin-left: 100px;
+}
+#mid{
+    width: 800px;
+ height: 800px;
+ float:left;
+ position: relative;
+ overflow: hidden;
+ margin-left:70px;
 }
 #right{
- width: 550px;
+ width: 435px;  
  height: 98%;
  float:right;
- margin-right: 400px;
+margin-right: 60px;
 }
 #left .content,#right .content{
  background: #faf0f9;
@@ -259,7 +266,7 @@ height: 500px;
  margin-top: 180px;
  float: left;
  background: #1616b4;
- padding: 20px;
+ padding: 10px;
  text-align: center;/* ++*/
 }
 .on{
@@ -308,6 +315,115 @@ height: 500px;
             width: 550px;
             height: 470px;
         }
+.map-list {
+            position: relative;
+  margin: 1.375em;
+ 
+  }
+  .map-list li.cluster {
+  display: none;
+}
+
+.map-list li:nth-child(even) {
+  background: #f0f0f0;
+}
+        @media (min-width:600px) {
+    .map2 {
+              
+    padding-top: 50%;
+        background-image: url(map-kanto-removebg-preview.png);
+        background-repeat: no-repeat;
+        background-size: 750px 400px;
+        
+        background-position: 50%;
+       
+  }
+
+  .map-list li {
+    position: absolute;
+    padding: 0;
+    transform: translateZ(0);
+  }
+  .map-list li:after {
+    position: absolute;
+    bottom: 0;
+    left: -1.5em;
+    content: '';
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    background: #fff;
+    border: 0.5em solid #0e5ca6;
+    border-radius: 50%;
+    border-bottom-right-radius: 0;
+    cursor: pointer;
+  }
+  .map-list li:hover {
+    z-index: 1;
+  }
+  .map-list li:hover:after {
+    border: 0.5em solid #ffb202;
+  }
+  .map-list li.kantou1 {
+    bottom: 22%;
+    left: 38%;
+  }
+  .map-list li.kantou2 {
+    bottom: 76%;
+    left: 24%;
+  }
+  .map-list li.kantou3 {
+    bottom: 12%;
+    left: 37%;
+  }
+  .map-list .details {
+    padding: 1rem;
+    position: absolute;
+    margin-bottom: 1rem;
+    transform: scale(0);
+    transform-origin: 0 100%;
+    font-size: 75%;
+    background: #eee;
+    border-radius: 0.5em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    bottom: 0;
+    left: 100%;
+    white-space: nowrap;
+    transition: opacity 500ms, transform 400ms cubic-bezier(0.6, -0.3, 0.3, 1.3);
+  }
+  .map-list li:hover .details {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .map-list p {
+    margin-bottom: 0.25rem;
+  }
+  .map-list .button {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+        }
+    @media (max-width:480px) {
+  body {
+      padding: 2rem 1rem;
+  }
+  .map-list {
+      margin: 1.375em 0;
+  }
+  .map-list p {
+      margin-bottom: 0.5rem;
+  }
+  .map-list .button {
+      position: static;
+      transform: none;
+      width: 100%;
+  }
+}
+
 </style>
 </head>
 
@@ -335,7 +451,7 @@ height: 500px;
  <tr><button class="custom-btn btn-12"><a href="kami.html"><span>Read more!</span><span>上毛電気鉄道</span></button></tr></a>
  <tr><button class="custom-btn btn-12"><a href="hakore.html"><span>Read more!</span><span>箱根登山鉄道</span></button></tr></a>
 </table> 
-<div id="main">
+
  
  <div id="left">
   <div class="title">
@@ -356,7 +472,35 @@ height: 500px;
   <img class="banner-imgBox-right" src="angle-circle-right.png" onclick="marginLeft(true)">
 </div>
   </div>
- </div>
+  <div id="mid">
+  <div class="kantouMap">
+    <ul class="map-list map2">
+      <li class="kantou1">
+        <div class="details">
+          <h2>箱根登山鉄道</h2>
+          <h3>神奈川県小田原市</h3>
+          <a class="button" href="hakore.html">Learn More</a>
+        </div>
+      </li>
+      <li class="kantou2">
+        <div class="details">
+          <h2>上毛電気鉄道</h2>
+          <h3>群馬県</h3>
+         
+          <a class="button" href="kami.html">Learn More</a>
+        </div>
+      </li>
+      <li class="kantou3">
+        <div class="details">
+          <h2>江の島電鉄</h2>
+          <h3>神奈川県藤沢市</h3>
+    
+          <a class="button" href="eno.html">Learn More</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
  <div id="right">
  
  
