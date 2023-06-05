@@ -268,7 +268,87 @@ background: #1616b4;
 padding: 20px;
 text-align: center;/* ++*/
 }
-
+.sidebar {
+        position: fixed;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        border-left: 3px solid #1616b4;
+        background-color: #1616b4;
+        transition: all 0.5s;
+      }
+      .sidebar.show {
+        right: 0;
+      }
+      .sidebar.hide {
+        right: -300px;
+      }
+      .sidebar .btn {
+        position: absolute;
+        left: -35px;
+        width: 35px;
+        height: 35px;
+        border-radius: 5px 0 0 5px;
+        background-color: #ffffff;
+        background-size: 35px 35px;
+      }
+      .sidebar .btn.open {
+        background-image: url(list.png);
+      }
+      .sidebar .btn.close {
+        background-image: url(list.png)
+      }
+      .sidebar .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+        z-index: 10;
+      }
+      .sidebar .nav_list {
+        position: absolute;
+        left: -35px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .sidebar .nav_list li {
+        width: 35px;
+        height: 35px;
+        position: relative;
+      }
+      .sidebar .nav_list li i {
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-color: #ffffff;
+        background-image: url(telegram.png);
+        background-size: 42px;
+        border-radius: 5px 0 0 5px;
+        background-position: -87px -174px;
+        transition: background-color 0.5s;
+      }
+      .sidebar .nav_list li span {
+        position: absolute;
+        left: 35px;
+        top: 0;
+        width: 70px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background-color: #7a6e6e;
+        transition: all 0.5s;
+      }
+      .sidebar .nav_list li:hover i {
+        background-color: #1616b4;
+        background-position: -87px -203px;
+      }
+      .sidebar .nav_list li:hover span {
+        background-color: #1616b4;
+        left: -70px;
+        color:#fff;
+      }
 </style>
 
 
@@ -340,12 +420,47 @@ text-align: center;/* ++*/
 環境都市工学部　都市システム工学科　程　ヨウ &copy;Copyright (c) 2023 .All Rights reserved
 </div> 
  </div>
- 
+ <div class="sidebar hide">
+    <div class="btn open"></div>
+    <div class="content"></div>
+    <ul class="nav_list">
+        <li>
+            <i></i>
+            <span>会社概要</span>
+          </li>
+          <li>
+            <i></i>
+            <span>線路</span>
+          </li>
+          <li>
+            <i></i>
+            <span>wiki</span>
+          </li>
+          <li>
+            <i></i>
+            <span>?</span>
+          </li>
+    </ul>
+  </div>
 
 <script src="../particles.js"></script>
 <script src="js/app.js"></script>
 
-
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let btn = document.querySelector(".sidebar .btn");
+    let flag = false;
+    btn.onclick = function () {
+      flag = !flag;
+      if (flag) {
+        sidebar.className = "sidebar show";
+        btn.className = "btn close";
+      } else {
+        sidebar.className = "sidebar hide";
+        btn.className = "btn open";
+      }
+    };
+  </script>
 
 </body>
 </html>

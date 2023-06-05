@@ -1,306 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <head>
-<style>
-
-html {
-  box-sizing: border-box;
-  height: 100%;
-  font-size: 100%;
-}
-#mid{
-width:550px;
-height: 500px;
-float: left;
- position: relative;
- overflow: hidden;
- margin-left:600px;
-}
-*,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  height: 100%;
-  padding: 2rem;
-  font: 100%/1.375em 'Roboto', sans-serif;
-  background: #fcfcfc;
-}
-
-h1 {
-  color: #0e5ca6;
-  font-weight: bold;
-  font-size: 180%;
-  line-height: 1em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-h2 {
-  color: #0e5ca6;
-  font-weight: bold;
-  font-size: 120%;
-  line-height: 1em;
-}
-
-h3 {
-  color: #0e5ca6;
-  font-weight: bold;
-  font-size: 110%;
-  line-height: 1em;
-}
-
-
-
-.map-list {
-  position: relative;
-  margin: 1.375em;
-  background: #ffffff;
-  
-}
-
-
-
-.map-list li.cluster {
-  display: none;
-}
-
-.map-list li:nth-child(even) {
-  background: #f0f0f0;
-}
-
-
-
-
-.map-list .button {
-  position: absolute;
-  top: 50%;
-  right: 1.375em; 
-  transform: translateY(-50%);
-}
-
-@media (min-width:600px){ 
-
-  .map2 {
-    padding-top: 50%;
-  
-    background-size: 700px 500px;
-    background-image: url(kant.jpeg);
-    background-repeat: no-repeat;
-   
-    background-position: 50%;
-    
-  }
-  
-  .map-list li {
-    position: absolute;
-    padding: 0;
-    transform: translateZ(0);
-  }
-  .map-list li:nth-child(even) {
-    background: none;
-  }
-  .map-list li:after {
-    position: absolute;
-    bottom: 0;
-    left: -1.5em;
-    content: '';
-    display: block;
-    width: 1.5em;
-    height: 1.5em;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-    background: #fff;
-    border: 0.5em solid #0e5ca6;
-    border-radius: 50%;
-    border-bottom-right-radius: 0;
-    cursor: pointer;
-  }
-  .map-list li:hover {
-    z-index: 1;
-  }
-  .map-list li:hover:after {
-    border: 0.5em solid #ffb202;
-  }
-  .map1 li.ger {
-    display: none;
-  }
-  .map-list li.site1 {
-    bottom: 55%;
-    left: 40%;
-  }
-  .map-list li.site2 {
-    bottom: 51%;
-    left: 53%;
-  }
-  .map-list li.site6 {
-    bottom: 50%;
-    left: 82%;
-  }
-  .map-list li.site7 {
-    bottom: 30%;
-    left: 13.5%;
-  }
-  .map-list li.site8 {
-    bottom: 64%;
-    left: 48.5%;
-  }
-  .map-list li.site9 {
-    bottom: 55%;
-    left: 56%;
-  }
-  .map-list li.site12 {
-    bottom: 43.5%;
-    left: 19.5%;
-  }
-  .map-list li.cluster {
-    bottom: 52%;
-    left: 49%;
-    display: block;
-  }
-  .map-list li.germany1 {
-    bottom: 62%;
-    left: 44.5%;
-  }
-  .map-list li.germany2 {
-    bottom: 49%;
-    left: 40%;
-  }
-  .map-list li.germany3 {
-    bottom: 82.5%;
-    left: 65%;
-  }
-  .map-list li.germany4 {
-    bottom: 21%;
-    left: 49%;
-  }
-  .map-list li.germany5 {
-    bottom: 72%;
-    left: 63%;
-  }
-  .map-list li.germany6 {
-    bottom: 55%;
-    left: 47%;
-  }
-  .map-list li.germany7 {
-    bottom: 49%;
-    left: 60%;
-  }
-  .map-list .details {
-    padding: 1rem;
-    position: absolute;
-    margin-bottom: 1rem;
-    transform: scale(0);
-    transform-origin: 0 100%;
-    font-size: 75%;
-    background: #eee;
-    border-radius: 0.5em;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    opacity: 0;
-    bottom: 0;
-    left: 100%;
-    white-space: nowrap;
-    transition: opacity 500ms, transform 400ms cubic-bezier(0.6, -0.3, 0.3, 1.3);
-  }
-  .map-list li:hover .details {
-    transform: scale(1);
-    opacity: 1;
-  }
-  .map-list p {
-    margin-bottom: 0.25rem;
-  }
-  .map-list .button {
-    position: static;
-    transform: none;
-    width: 100%;
-  }
-}
-
-@media (max-width:480px) {
-  body {
-      padding: 2rem 1rem;
-  }
-  .map-list {
-      margin: 1.375em 0;
-  }
-  .map-list p {
-      margin-bottom: 0.5rem;
-  }
-  .map-list .button {
-      position: static;
-      transform: none;
-      width: 100%;
-  }
-}
-    </style>
+	<meta charset="UTF-8">
+	<title>Translate</title>
 </head>
 <body>
-
-
-<div id="mid">
-<div class="germanyMap">
-  <ul class="map-list map2">
-    <li class="germany1">
-      <div class="details">
-        <h2>Eurac</h2>
-        <h3>Lemgo</h3>
-        <p>Machning</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany2">
-      <div class="details">
-        <h2>MAT Foundries Europe</h2>
-        <h3>Neunkirchen</h3>
-        <p>Foundry & Technology Centre</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany3">
-      <div class="details">
-        <h2>MAT Foundries Europe</h2>
-        <h3>Ueckermünde</h3>
-        <p>Foundry</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany4">
-      <div class="details">
-        <h2>Schleftt Automotive GmbH</h2>
-        <h3>Westhausen-Lippach</h3>
-        <p>Machning</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany5">
-      <div class="details">
-        <h2>Schleftt Automotive GmbH</h2>
-        <h3>Eberswalde</h3>
-        <p>Machning</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany6">
-      <div class="details">
-        <h2>MAT Machining Europe</h2>
-        <h3>Immenhausen</h3>
-        <p>Machning</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-    <li class="germany7">
-      <div class="details">
-        <h2>PTR</h2>
-        <h3>Altenburg</h3>
-        <p>Machning</p>
-        <a class="button" href="#0">Learn More</a>
-      </div>
-    </li>
-  </ul>
-</div></div>
-    </body>
-
-    <script>
-   
+<div id="SRC">
+<textarea id="srcText" name="srcText " style="width:500px; height:120px;">
+</textarea>
  
-        </script>
+<button id="Click" name="Click">Translate</button>
+</div>
+ 
+<br /> 
+<hr />
+<div id="DST">
+<textarea id="dstText" name="dstText" style="width:500px; height:120px;">
+</textarea>
+</div>
+ 
+ 
+</body>
+
+ 
+$("#Click").click(function (){
+ 
+var contents = $("#srcText").val() ;
+alert(  contents) ;
+ 
+ 
+$.ajax({
+	   type:"get",
+	   async:false,													//must be synchronized
+	   url:"http://openapi.baidu.com/public/2.0/bmt/translate",
+	   dataType:"jsonp",
+	   data: {
+		   from: "zh",												//language choose
+		   to: "en",
+		   client_id:  这个地方输入你自己在百度开源申请的API 的 KEY,					//baidu api key
+		   q: contents
+	   },	
+	   success:function(json , status){
+		 
+			//alert("here is the status :"+status) ;
+			$("#dstText").empty() ;
+ 
+			for ( var i = 0 ; i < json.trans_result.length ; i++ )
+			{
+			$("#dstText").append( json.trans_result[i].dst  +" <br />") ;
+			}
+		//	alert(json.trans_result[0].dst +" <br /> "+json.trans_result[0].src) ;
+		 
+	  },
+	  error:function(){
+		  alert('Fail to translate with baidu API!');
+	  }
+});
+}) ;
+ 
+</script>
+</html>

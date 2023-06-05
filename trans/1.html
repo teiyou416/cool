@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>侧边栏</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        border-left: 3px solid #7a6e6e;
+        background-color: #7a6e6e;
+        transition: all 0.5s;
+      }
+      .sidebar.show {
+        right: 0;
+      }
+      .sidebar.hide {
+        right: -300px;
+      }
+      .sidebar .btn {
+        position: absolute;
+        left: -35px;
+        width: 35px;
+        height: 35px;
+        border-radius: 5px 0 0 5px;
+        background-color: #7a6e6e;
+        background-size: 35px 35px;
+      }
+      .sidebar .btn.open {
+        background-image: url(../images/icon/list.png);
+      }
+      .sidebar .btn.close {
+        background-image: url(../images/icon/cross.png);
+      }
+      .sidebar .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 300px;
+        background-color: yellow;
+        z-index: 10;
+      }
+      .sidebar .nav_list {
+        position: absolute;
+        left: -35px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .sidebar .nav_list li {
+        width: 35px;
+        height: 35px;
+        position: relative;
+      }
+      .sidebar .nav_list li i {
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-color: #7a6e6e;
+        background-image: url(../images/icon/toolbars.png);
+        background-position: -87px -174px;
+        transition: background-color 0.5s;
+      }
+      .sidebar .nav_list li span {
+        position: absolute;
+        left: 35px;
+        top: 0;
+        width: 70px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background-color: #7a6e6e;
+        transition: all 0.5s;
+      }
+      .sidebar .nav_list li:hover i {
+        background-color: pink;
+        background-position: -87px -203px;
+      }
+      .sidebar .nav_list li:hover span {
+        background-color: pink;
+        left: -70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar hide">
+      <!-- 按钮区域 -->
+      <div class="btn open"></div>
+      <!-- 内容区 -->
+      <div class="content"></div>
+      <!-- 侧边导航 -->
+      <ul class="nav_list">
+        <li>
+          <i></i>
+          <span>商城会员</span>
+        </li>
+        <li>
+          <i></i>
+          <span>商城会员</span>
+        </li>
+        <li>
+          <i></i>
+          <span>商城会员</span>
+        </li>
+        <li>
+          <i></i>
+          <span>商城会员</span>
+        </li>
+      </ul>
+    </div>
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let btn = document.querySelector(".sidebar .btn");
+      let flag = false;
+      btn.onclick = function () {
+        flag = !flag;
+        if (flag) {
+          sidebar.className = "sidebar show";
+          btn.className = "btn close";
+        } else {
+          sidebar.className = "sidebar hide";
+          btn.className = "btn open";
+        }
+      };
+    </script>
+  </body>
+</html>
