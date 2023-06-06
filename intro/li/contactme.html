@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+  <style>
+ a{    
+	text-decoration: none;
+}
+
+a:link{
+	color: #0a0a0a;
+}
+a:visited{
+	color:#000000;
+}
+
+a:hover{
+	color: rgb(3, 3, 3);
+}
+h1 {
+  line-height: .95;
+  color: #66fcf1;
+  font-weight: 900;
+  font-size: 150px;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+.contact{
+  margin-right:-780px;
+  margin-top: -200px;
+  float: right;
+}
+.p{
+    color: #66fcf1;
+}
+.center {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 500px;
+  bottom: 0;
+  width: 581px;
+  height: 50%;
+}
+button {
+  margin: 20px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.btn-15 {
+  background: #66fcf1;
+  border: none;
+  z-index: 1;
+  margin:120px 460px;
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  transition: all 0.3s ease;
+}
+.btn-15:hover {
+  color: #fff;
+}
+.btn-15:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+  top: 2px;
+}
+p{
+  color:#66fcf1;
+}
+  </style>
+</head>
+<body>
+<div id="particles-js"></div>
+
+<div class="center">
+  <h1> THANK YOU! </h1>
+  <p>you can contact me with gmail</p>
+  <p><a href="k771937@kansai-u.ac.jp"style="color:#66fcf1">k771937@kansai-u.ac.jp</p></a>
+  <button class="custom-btn btn-15"><a href="index.html">back</button></a>
+</div>
+
+
+
+
+
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
