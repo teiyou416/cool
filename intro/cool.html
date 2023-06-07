@@ -8,8 +8,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
  <link rel="stylesheet" media="screen" href="css/style.css">
- <link rel="alternate machine-translated-from" hreflang="ja"
-            href="http://127.0.0.1:5500/intro/cool.html">
 <style>
 body{
  margin: 0;
@@ -252,7 +250,7 @@ height: 500px;
  width: 435px;  
  height: 98%;
  float:right;
-margin-right: 60px;
+margin-right: 40px;
 }
 #left .content,#right .content{
  background: #faf0f9;
@@ -504,7 +502,44 @@ text-align: center;
         color:#fff;
         left: -70px;
       }
-    
+      input {
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+#title h1 {
+    font-size: 1.2rem;
+    line-height: 6.4rem;
+    letter-spacing: 0;
+    font-weight: 350;
+    color: #212121;
+    text-transform: inherit;
+    text-align: center;
+}
+
+#title h2 {
+    font-size: 0.5rem;
+    line-height: 5.0rem;
+    letter-spacing:0rem;
+    font-weight: 250;
+    color: #212121;
+    text-align: center;
+}
+div.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.select_font{
+    font-size: 15px;
+}
+.dbtn1,.dbtn2,.dbtn3{
+            display: none;
+        }
+
 </style>
 </head>
 
@@ -588,6 +623,7 @@ text-align: center;
   <p>土木学会選奨土木遺産は、社団法人土木学会が、日本国内の歴史的建造物のうち土木構造物について、これの保存に資すること
   を目的として構造物群を「土木遺産」に認定して顕彰する制度、及びこれにより顕彰された土木構造物群のこと。
   </p>
+
  </div>
 </div>
  <div id="footer">
@@ -596,15 +632,75 @@ text-align: center;
  </div>
 <div class="sidebar hide">
   <div class="btn open"></div>
-  <div class="content"></div>
+ 
+  <div class="content"> <p>サイドメニューで操作してください。</p>
+    <div class="dbtn1">
+    <div class="wrapper">
+      <div id="title">
+      <h1>
+         Google NLP API
+      </h1>
+      </div>
+      <form onsubmit="return false;">
+  
+          <div class="input-group mb-3 col-12">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Input</span>
+              </div>
+              <input id="textInput"size=20 value="I see dead people.">
+          </div>
+  
+          <div class="input-group mb-3 col-6 select_font">
+                  <div class="input-group-prepend">
+                      <span class="select_font input-group-text" for="target_lang">Target Language</span>
+                  </div>
+                  <select class="custom-select" name="Target Language" id="target_lang" >
+                      <option value="zh-CN">Chinese</option>
+                      <option value="en">English</option>
+                      <option value="fr">French</option>
+                      <option value="de">German</option>
+                      <option value="ja">Japanese</option>
+                      <option value="ko">Korean</option>
+                      <option value="hi">Hindi</option>
+                  </select>
+          </div>
+          <div class="innerElement col-12 mb-3">
+              <input type="button"  onclick="speak()" value="Speak the sentence">
+              <input type="button"  onclick="translateAndSpeak()" value="Translate and speak">
+          </div>
+          <div class="input-group mb-4 col-12" hidden id="translated_area">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Translated:</span>
+              </div>
+              <input id="translated_text" size=20 type="text" readonly>
+          </div>
+  
+      </form>
+    </div>
+    
+    </div>
+    <div class="dbtn2">
+      contact me with gmail k771937@kansai-u.ac.jp
+    </div>
+    <div class="dbtn3">
+      <p>
+        疑問があれば入力してください。
+      </p>
+      <input size="40"><button>送信</button>
+    </div>
+    
+  </div>
+
+
+  <div class="tab">
   <ul class="nav_list">
     <li>
-      <i></i>
-      <span>会社概要</span>
+     <i></i>
+      <span><a type="button" class="list-group-item list-group-item-action btn1">翻訳</span></a>
     </li>
     <li>
       <i></i>
-      <span>線路</span>
+      <span><a type="button" class="list-group-item list-group-item-action btn2">contact me</span></a>
     </li>
     <li>
       <i></i>
@@ -612,9 +708,10 @@ text-align: center;
     </li>
     <li>
       <i></i>
-      <span>?</span>
+      <span><a type="button" class="list-group-item list-group-item-action btn3">疑問</span></a>
     </li>
   </ul>
+</div>
 </div>
 <script src="../particles.js"></script>
 <script src="js/app.js"></script>
@@ -685,6 +782,122 @@ text-align: center;
       btn.className = "btn open";
     }
   };
+</script>
+
+<script>var mayasAPIKey = "AIzaSyAo3d2dA0xoSHudzDhC0fNIfl6q0o-kACY";
+  function translateAndSpeak() {
+      var baseUrl = "https://translation.googleapis.com/language/translate/v2"
+      var content = {'q': document.getElementById("textInput").value,
+                      'target':document.getElementById("target_lang").value};
+  
+      ajaxRequest("POST",baseUrl+"?key="+mayasAPIKey, handleTranslationResponse, JSON.stringify(content));
+  }
+  
+  function analyzeSentiment() {
+      var baseUrl = "https://language.googleapis.com/v1/documents:analyzeSentiment";
+      var content = {'document': {"type":"PLAIN_TEXT",
+              "content":document.getElementById("textInput").value}};
+      ajaxRequest("POST",baseUrl+"?key="+mayasAPIKey, handleSentimentResponse, JSON.stringify(content));
+  }
+  
+  function handleSentimentResponse() {
+      if (successfulRequest(this)) {
+          var response_json = JSON.parse(this.responseText);
+          var document_sentiment = response_json['documentSentiment'];
+          var display_text = "magnitude: "+document_sentiment['magnitude']+"\tscore: "+document_sentiment['score'];
+          document.getElementById("document_sentiment").value = display_text;
+          document.getElementById("sentiment_area").hidden=false;
+          console.log(response_json);
+      }
+      else {
+          console.log("Ready state: " + this.readyState);
+          console.log("Status: " + this.status);
+          console.log("Status text: " + this.statusText);
+      }
+  }
+  function handleTranslationResponse() {
+      if (successfulRequest(this)) {
+          var response_json = JSON.parse(this.responseText);
+          var translated_text = "";
+          response_json["data"]["translations"].forEach(function (element) {
+              translated_text += element['translatedText']+'\n';
+          });
+          var target_lang = document.getElementById("target_lang").value;
+          document.getElementById("translated_text").value = translated_text;
+          document.getElementById("translated_area").hidden = false;
+          speak(translated_text, target_lang);
+      }
+      else {
+          console.log("Ready state: " + this.readyState);
+          console.log("Status: " + this.status);
+          console.log("Status text: " + this.statusText);
+      }
+    }
+  function speakOriginal() {
+      var textInput = document.getElementById("textInput");
+      var text = textInput.value;
+      speak(text, 'en-US');
+  }
+  function speak(text, lang) {
+      if ('speechSynthesis' in window) {
+          var msg = new SpeechSynthesisUtterance();
+          var voices = window.speechSynthesis.getVoices();
+          if (voices.length > 0) {
+              console.log("Your browser supports " + voices.length + " voices");
+              console.log(voices);
+              msg.voice = voices.filter(function(voice) { return voice.lang == lang; })[1];
+          }
+          msg.voiceURI = 'native';
+          msg.volume = 0.8; 
+          msg.rate = 0.6; 
+          msg.pitch = 0.6; 
+          msg.text = text;
+          msg.lang = lang;
+          msg.onend = function(e) {
+              console.log('Finished in ' + e.elapsedTime + ' milliseconds.');
+          };
+          speechSynthesis.speak(msg);
+      }
+  }
+  function ajaxRequest(method, url, handlerFunction, content) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open(method, url);
+      xhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+      xhttp.onreadystatechange = handlerFunction;
+      if (method == "POST") {
+          xhttp.send(content);
+      }
+      else {
+          xhttp.send();
+      }
+  }
+  function successfulRequest(request) {
+      return request.readyState === 4 && request.status == 200;
+  }
+  
+  </script>
+<script>
+  var dbtn1 = document.querySelector(".dbtn1");
+  var dbtn2 = document.querySelector(".dbtn2");
+  var dbtn3 = document.querySelector(".dbtn3");
+  var btn1 = document.querySelector(".btn1");
+  var btn2 = document.querySelector(".btn2");
+  var btn3 = document.querySelector(".btn3");
+  btn1.onclick = function(){
+      dbtn1.style.display = "block";
+      dbtn2.style.display = "none";
+      dbtn3.style.display = "none";
+  }
+  btn2.onclick = function(){
+      dbtn2.style.display = "block";
+      dbtn1.style.display = "none";
+      dbtn3.style.display = "none";
+  }
+  btn3.onclick = function(){
+      dbtn3.style.display = "block";
+      dbtn1.style.display = "none";
+      dbtn2.style.display = "none";
+  }
 </script>
 </body>
 

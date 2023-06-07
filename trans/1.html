@@ -1,138 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
+
+ 
+
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>侧边栏</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      ul {
-        list-style: none;
-      }
-      .sidebar {
-        position: fixed;
-        top: 0;
-        width: 300px;
-        height: 100%;
-        border-left: 3px solid #7a6e6e;
-        background-color: #7a6e6e;
-        transition: all 0.5s;
-      }
-      .sidebar.show {
-        right: 0;
-      }
-      .sidebar.hide {
-        right: -300px;
-      }
-      .sidebar .btn {
-        position: absolute;
-        left: -35px;
-        width: 35px;
-        height: 35px;
-        border-radius: 5px 0 0 5px;
-        background-color: #7a6e6e;
-        background-size: 35px 35px;
-      }
-      .sidebar .btn.open {
-        background-image: url(../images/icon/list.png);
-      }
-      .sidebar .btn.close {
-        background-image: url(../images/icon/cross.png);
-      }
-      .sidebar .content {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 300px;
-        background-color: yellow;
-        z-index: 10;
-      }
-      .sidebar .nav_list {
-        position: absolute;
-        left: -35px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .sidebar .nav_list li {
-        width: 35px;
-        height: 35px;
-        position: relative;
-      }
-      .sidebar .nav_list li i {
-        display: block;
-        width: 35px;
-        height: 35px;
-        background-color: #7a6e6e;
-        background-image: url(../images/icon/toolbars.png);
-        background-position: -87px -174px;
-        transition: background-color 0.5s;
-      }
-      .sidebar .nav_list li span {
-        position: absolute;
-        left: 35px;
-        top: 0;
-        width: 70px;
-        height: 35px;
-        line-height: 35px;
-        text-align: center;
-        background-color: #7a6e6e;
-        transition: all 0.5s;
-      }
-      .sidebar .nav_list li:hover i {
-        background-color: pink;
-        background-position: -87px -203px;
-      }
-      .sidebar .nav_list li:hover span {
-        background-color: pink;
-        left: -70px;
-      }
-    </style>
+      <meta charset="UTF-8">
+      <title>Google Translate API</title>
+      <style>
+        input {
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+#title h1 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    letter-spacing: 0;
+    font-weight: 350;
+    color: #212121;
+    text-transform: inherit;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#title h2 {
+    font-size: 1.5rem;
+    line-height: 2.8rem;
+    letter-spacing: 0.01rem;
+    font-weight: 250;
+    color: #212121;
+    text-align: center;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+div.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 50px;
+}
+
+.select_font{
+    font-size: 15px;
+}
+
+.btn{
+    margin-left: 15px;
+}
+      </style>
   </head>
   <body>
-    <div class="sidebar hide">
-      <!-- 按钮区域 -->
-      <div class="btn open"></div>
-      <!-- 内容区 -->
-      <div class="content"></div>
-      <!-- 侧边导航 -->
-      <ul class="nav_list">
-        <li>
-          <i></i>
-          <span>商城会员</span>
-        </li>
-        <li>
-          <i></i>
-          <span>商城会员</span>
-        </li>
-        <li>
-          <i></i>
-          <span>商城会员</span>
-        </li>
-        <li>
-          <i></i>
-          <span>商城会员</span>
-        </li>
-      </ul>
-    </div>
-    <script>
-      let sidebar = document.querySelector(".sidebar");
-      let btn = document.querySelector(".sidebar .btn");
-      let flag = false;
-      btn.onclick = function () {
-        flag = !flag;
-        if (flag) {
-          sidebar.className = "sidebar show";
-          btn.className = "btn close";
-        } else {
-          sidebar.className = "sidebar hide";
-          btn.className = "btn open";
-        }
-      };
-    </script>
+  <div class="wrapper">
+      <div id="title">
+      <h1>
+         Google NLP API
+      </h1>
+          <h2>This page tests the Google Translation API and speech synthesis in the browser.</h2>
+      </div>
+  
+      <form onsubmit="return false;">
+  
+          <div class="input-group mb-3 col-12">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Input</span>
+              </div>
+              <input id="textInput"size=20 value="I see dead people.">
+          </div>
+  
+          <div class="input-group mb-3 col-6 select_font">
+                  <div class="input-group-prepend">
+                      <span class="select_font input-group-text" for="target_lang">Target Language</span>
+                  </div>
+                  <select class="custom-select" name="Target Language" id="target_lang" >
+                      <option value="zh-CN">Chinese</option>
+                      <option value="en">English</option>
+                      <option value="fr">French</option>
+                      <option value="de">German</option>
+                      <option value="ja">Japanese</option>
+                      <option value="ko">Korean</option>
+                      <option value="hi">Hindi</option>
+                  </select>
+          </div>
+          <div class="innerElement col-12 mb-3">
+              <input type="button" class="btn btn-outline-primary" onclick="speakOriginal()" value="Speak the sentence">
+              <input type="button" class="btn btn-outline-primary" onclick="translateAndSpeak()" value="Translate and speak">
+          </div>
+          <div class="input-group mb-4 col-12" hidden id="translated_area">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Translated:</span>
+              </div>
+              <input id="translated_text" size=20 type="text" readonly>
+          </div>
+  
+     
+  
+      </form>
+  
+  </div>
   </body>
-</html>
+  </html>    
+  <script>var mayasAPIKey = "AIzaSyAo3d2dA0xoSHudzDhC0fNIfl6q0o-kACY";
+    function translateAndSpeak() {
+        var baseUrl = "https://translation.googleapis.com/language/translate/v2"
+        var content = {'q': document.getElementById("textInput").value,
+                        'target':document.getElementById("target_lang").value};
+    
+        ajaxRequest("POST",baseUrl+"?key="+mayasAPIKey, handleTranslationResponse, JSON.stringify(content));
+    }
+    
+    function handleTranslationResponse() {
+        if (successfulRequest(this)) {
+            var response_json = JSON.parse(this.responseText);
+            var translated_text = "";
+            response_json["data"]["translations"].forEach(function (element) {
+                translated_text += element['translatedText']+'\n';
+            });
+            var target_lang = document.getElementById("target_lang").value;
+            document.getElementById("translated_text").value = translated_text;
+            document.getElementById("translated_area").hidden = false;
+            speak(translated_text, target_lang);
+        } else {
+            console.log("Ready state: " + this.readyState);
+            console.log("Status: " + this.status);
+            console.log("Status text: " + this.statusText);
+        }
+      }
+    function speakOriginal() {
+        var textInput = document.getElementById("textInput");
+        var text = textInput.value;
+        speak(text, 'en-US');
+    }
+    function speak(text, lang) {
+        if ('speechSynthesis' in window) {
+            var msg = new SpeechSynthesisUtterance();
+            var voices = window.speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                console.log("Your browser supports " + voices.length + " voices");
+                console.log(voices);
+                msg.voice = voices.filter(function(voice) { return voice.lang == lang; })[1];
+            }
+            msg.voiceURI = 'native';
+            msg.volume = 0.8; 
+            msg.rate = 0.6; 
+            msg.pitch = 0.6; 
+            msg.text = text;
+            msg.lang = lang;
+            msg.onend = function(e) {
+                console.log('Finished in ' + e.elapsedTime + ' milliseconds.');
+            };
+            speechSynthesis.speak(msg);
+        }
+    }
+    function ajaxRequest(method, url, handlerFunction, content) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open(method, url);
+        xhttp.setRequestHeader("Content-type","application/json; charset=utf-8");
+        xhttp.onreadystatechange = handlerFunction;
+        if (method == "POST") {
+            xhttp.send(content);
+        }
+        else {
+            xhttp.send();
+        }
+    }
+    function successfulRequest(request) {
+        return request.readyState === 4 && request.status == 200;
+    }
+    
+    </script>
